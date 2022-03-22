@@ -3,19 +3,28 @@
 Software for the ESP2866 that sends P1 smart meter data to an mqtt broker (with OTA firmware updates)
 
 ## About this fork
-I made this fork since i got a new-new electricity meter, **Landis+Gyr E360**, from the power company with a newer firmware, <br/>
-so that the meter won't die every other day. <br/>
+I made this fork since i got a new-new electricity meter,<br/>
+**Landis+Gyr E360**, from the power company with a newer firmware, so that the meter won't die every other day. <br/>
 I added some strings to the MQTT file so that Home Assistant can use the data in the new Energy-tab. <br/>
-Also there is a new wiring diagram connecting RTS with 5v to send data since i never got it working with 3.3v.
+Also there is a new wiring diagram connecting RTS with 5v to send data since i never got it working with 3.3v. <br/>
+
+To get this working in Home Assitant.
+1. Solder together everything as shown below.
+2. Flash the D1 mini with the files from the folder "esp8266_p1meter".
+3. Put the "p1_sensors_sv.yaml" file in your Home Assistant file editor.
+4. Enjoy!
+
+<br/>
 
 | P1 PIN  | D1 Mini |
-| ------------- | ------------- |
+| ---- | ---- |
 | 1 - GND | GND |
 | 2 - RXD | RX |
 | 3 - - | - |
 | 4 - GND| GND |
 | 5 - RTS  | 5v |
 | 6 - 5v  | 5v |
+  
 ![Wiring](https://raw.githubusercontent.com/bOOt3r/esp8266_p1meter_sv/master/assets/D1_mini_bb.jpg)
 
 ## about this fork (from UdoK)
