@@ -5,7 +5,10 @@
   unit_of_measurement: 'kWh'
   state_topic: "sensors/power/p1meter/consumption"
   value_template: "{{ value|float / 1000 }}"
-
+  device_class: energy              #This and..
+  state_class: 'total_increasing'   #this makes P1 Consumption show as a energy device in Home Assistant. 
+  
+  
 - platform: mqtt
   name: P1 Return Delivery
   unit_of_measurement: 'kWh'
@@ -29,6 +32,8 @@
   unit_of_measurement: 'kW'
   state_topic: "sensors/power/p1meter/actual_consumption"
   value_template: "{{ value|float / 1000 }}"
+  device_class: energy
+  state_class: measurement
 
 - platform: mqtt
   name: P1 Actual Return Delivery
@@ -155,4 +160,3 @@
   unit_of_measurement: 'A'
   state_topic: "sensors/power/p1meter/l3_instant_power_current"
   value_template: "{{ value|float / 1000 }}"
-
