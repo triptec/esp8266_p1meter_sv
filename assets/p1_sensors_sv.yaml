@@ -1,162 +1,185 @@
 # Sensors for esp8266_p1meter-sv to be used in Home Assistant
+mqtt:
+  sensor:
+    - name: P1 Consumption
+      unique_id: 'sensor.p1_consumption'
+      device_class: energy
+      state_class: total_increasing
+      unit_of_measurement: kWh
+      state_topic: "sensors/power/p1meter/consumption"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 Consumption
-  unit_of_measurement: 'kWh'
-  state_topic: "sensors/power/p1meter/consumption"
-  value_template: "{{ value|float / 1000 }}"
-  device_class: energy              #This and..
-  state_class: 'total_increasing'   #this makes P1 Consumption show as a energy device in Home Assistant. 
-  
-  
-- platform: mqtt
-  name: P1 Return Delivery
-  unit_of_measurement: 'kWh'
-  state_topic: "sensors/power/p1meter/returndelivery"
-  value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 Consumption Reactive
-  unit_of_measurement: 'kVArh'
-  state_topic: "sensors/power/p1meter/consumption_reactive"
-  value_template: "{{ value|float / 1000 }}"
+    - name: P1 Return Delivery
+      unique_id: 'sensor.p1_returndelivery'
+      device_class: energy
+      state_class: total_increasing
+      unit_of_measurement: kWh
+      state_topic: "sensors/power/p1meter/returndelivery"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 Return Delivery Reactive
-  unit_of_measurement: 'kVArh'
-  state_topic: "sensors/power/p1meter/returndelivery_reactive"
-  value_template: "{{ value|float / 1000 }}"
+    - name: P1 Consumption Reactive
+      unique_id: 'sensor.p1_consumption_reactive'
+      unit_of_measurement: kVArh
+      state_topic: "sensors/power/p1meter/consumption_reactive"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 Actual Power Consumption
-  unit_of_measurement: 'kW'
-  state_topic: "sensors/power/p1meter/actual_consumption"
-  value_template: "{{ value|float / 1000 }}"
-  device_class: energy
-  state_class: measurement
+    - name: P1 Return Delivery Reactive
+      unique_id: 'sensor.p1_returndelivery_reactive'
+      unit_of_measurement: kVArh
+      state_topic: "sensors/power/p1meter/returndelivery_reactive"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 Actual Return Delivery
-  unit_of_measurement: 'kW'
-  state_topic: "sensors/power/p1meter/actual_returndelivery"
-  value_template: "{{ value|float / 1000 }}"
+    - name: P1 Actual Power Consumption
+      unique_id: 'sensor.p1_actual_consumption'
+      device_class: power
+      state_class: measurement
+      unit_of_measurement: kW
+      state_topic: "sensors/power/p1meter/actual_consumption"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 Actual Reactive Power Consumption
-  unit_of_measurement: 'kVAr'
-  state_topic: "sensors/power/p1meter/actual_consumption_reactive"
-  value_template: "{{ value|float / 1000 }}"
+    - name: P1 Actual Return Delivery
+      unique_id: 'sensor.p1_actual_returndelivery'
+      device_class: power
+      state_class: measurement
+      unit_of_measurement: kW
+      state_topic: "sensors/power/p1meter/actual_returndelivery"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 Actual Reactive Return Delivery
-  unit_of_measurement: 'kVAr'
-  state_topic: "sensors/power/p1meter/actual_returndelivery_reactive"
-  value_template: "{{ value|float / 1000 }}"
+    - name: P1 Actual Reactive Power Consumption
+      unique_id: 'sensor.p1_actual_consumption_reactive'
+      unit_of_measurement: kVAr
+      state_topic: "sensors/power/p1meter/actual_consumption_reactive"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 L1 Instant Power Usage
-  unit_of_measurement: 'kW'
-  state_topic: "sensors/power/p1meter/l1_instant_power_usage"
-  value_template: "{{ value|float / 1000 }}"
+    - name: P1 Actual Reactive Return Delivery
+      unique_id: 'sensor.p1_actual_returndelivery_reactive'
+      unit_of_measurement: kVAr
+      state_topic: "sensors/power/p1meter/actual_returndelivery_reactive"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 L1 Instant Power Delivery
-  unit_of_measurement: 'kW'
-  state_topic: "sensors/power/p1meter/l1_instant_power_delivery"
-  value_template: "{{ value|float / 1000 }}"
+    - name: P1 L1 Instant Power Usage
+      unique_id: 'sensor.p1_l1_instant_power_usage'
+      device_class: power
+      state_class: measurement
+      unit_of_measurement: kW
+      state_topic: "sensors/power/p1meter/l1_instant_power_usage"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 L2 Instant Power Usage
-  unit_of_measurement: 'kW'
-  state_topic: "sensors/power/p1meter/l2_instant_power_usage"
-  value_template: "{{ value|float / 1000 }}"
+    - name: P1 L1 Instant Power Delivery
+      unique_id: 'sensor.p1_l1_instant_power_delivery'
+      device_class: power
+      state_class: measurement
+      unit_of_measurement: kW
+      state_topic: "sensors/power/p1meter/l1_instant_power_delivery"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 L2 Instant Power Delivery
-  unit_of_measurement: 'kW'
-  state_topic: "sensors/power/p1meter/l2_instant_power_delivery"
-  value_template: "{{ value|float / 1000 }}"
+    - name: P1 L2 Instant Power Usage
+      unique_id: 'sensor.p1_l2_instant_power_usage'
+      device_class: power
+      state_class: measurement
+      unit_of_measurement: kW
+      state_topic: "sensors/power/p1meter/l2_instant_power_usage"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 L3 Instant Power Usage
-  unit_of_measurement: 'kW'
-  state_topic: "sensors/power/p1meter/l3_instant_power_usage"
-  value_template: "{{ value|float / 1000 }}"
+    - name: P1 L2 Instant Power Delivery
+      unique_id: 'sensor.p1_l2_instant_power_delivery'
+      device_class: power
+      state_class: measurement
+      unit_of_measurement: kW
+      state_topic: "sensors/power/p1meter/l2_instant_power_delivery"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 L3 Instant Power Delivery
-  unit_of_measurement: 'kW'
-  state_topic: "sensors/power/p1meter/l3_instant_power_delivery"
-  value_template: "{{ value|float / 1000 }}"
+    - name: P1 L3 Instant Power Usage
+      unique_id: 'sensor.p1_l3_instant_power_usage'
+      device_class: power
+      state_class: measurement
+      unit_of_measurement: kW
+      state_topic: "sensors/power/p1meter/l3_instant_power_usage"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 L1 Reactive Power Usage
-  unit_of_measurement: 'kVAr'
-  state_topic: "sensors/power/p1meter/l1_reactive_power_usage"
-  value_template: "{{ value|float / 1000 }}"
+    - name: P1 L3 Instant Power Delivery
+      unique_id: 'sensor.p1_l3_instant_power_delivery'
+      device_class: power
+      state_class: measurement
+      unit_of_measurement: kW
+      state_topic: "sensors/power/p1meter/l3_instant_power_delivery"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 L1 Reactive Power Delivery
-  unit_of_measurement: 'kVAr'
-  state_topic: "sensors/power/p1meter/l1_reactive_power_delivery"
-  value_template: "{{ value|float / 1000 }}"
+    - name: P1 L1 Reactive Power Usage
+      unit_of_measurement: 'kVAr'
+      state_topic: "sensors/power/p1meter/l1_reactive_power_usage"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 L2 Reactive Power Usage
-  unit_of_measurement: 'kVAr'
-  state_topic: "sensors/power/p1meter/l2_reactive_power_usage"
-  value_template: "{{ value|float / 1000 }}"
+    - name: P1 L1 Reactive Power Delivery
+      unit_of_measurement: 'kVAr'
+      state_topic: "sensors/power/p1meter/l1_reactive_power_delivery"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 L2 Reactive Power Delivery
-  unit_of_measurement: 'kVAr'
-  state_topic: "sensors/power/p1meter/l2_reactive_power_delivery"
-  value_template: "{{ value|float / 1000 }}"
+    - name: P1 L2 Reactive Power Usage
+      unit_of_measurement: 'kVAr'
+      state_topic: "sensors/power/p1meter/l2_reactive_power_usage"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 L3 Reactive Power Usage
-  unit_of_measurement: 'kVAr'
-  state_topic: "sensors/power/p1meter/l3_reactive_power_usage"
-  value_template: "{{ value|float / 1000 }}"
+    - name: P1 L2 Reactive Power Delivery
+      unit_of_measurement: 'kVAr'
+      state_topic: "sensors/power/p1meter/l2_reactive_power_delivery"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 L3 Reactive Power Delivery
-  unit_of_measurement: 'kVAr'
-  state_topic: "sensors/power/p1meter/l3_reactive_power_delivery"
-  value_template: "{{ value|float / 1000 }}"
+    - name: P1 L3 Reactive Power Usage
+      unit_of_measurement: 'kVAr'
+      state_topic: "sensors/power/p1meter/l3_reactive_power_usage"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 L1 Voltage
-  unit_of_measurement: 'V'   
-  state_topic: "sensors/power/p1meter/l1_voltage"
-  value_template: "{{ value|float / 1000 }}"
+    - name: P1 L3 Reactive Power Delivery
+      unit_of_measurement: 'kVAr'
+      state_topic: "sensors/power/p1meter/l3_reactive_power_delivery"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 L2 Voltage
-  unit_of_measurement: 'V'   
-  state_topic: "sensors/power/p1meter/l2_voltage"
-  value_template: "{{ value|float / 1000 }}"
+    - name: P1 L1 Voltage
+      unique_id: 'sensor.p1_l1_voltage'
+      device_class: voltage
+      state_class: measurement
+      unit_of_measurement: V
+      state_topic: "sensors/power/p1meter/l1_voltage"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 L3 Voltage
-  unit_of_measurement: 'V'   
-  state_topic: "sensors/power/p1meter/l3_voltage"
-  value_template: "{{ value|float / 1000 }}"
-  
-- platform: mqtt
-  name: P1 L1 Instant Power Current
-  unit_of_measurement: 'A'
-  state_topic: "sensors/power/p1meter/l1_instant_power_current"
-  value_template: "{{ value|float / 1000 }}"
+    - name: P1 L2 Voltage
+      unique_id: 'sensor.p1_l2_voltage'
+      device_class: voltage
+      state_class: measurement
+      unit_of_measurement: V
+      state_topic: "sensors/power/p1meter/l2_voltage"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 L2 Instant Power Current
-  unit_of_measurement: 'A'
-  state_topic: "sensors/power/p1meter/l2_instant_power_current"
-  value_template: "{{ value|float / 1000 }}"
+    - name: P1 L3 Voltage
+      unique_id: 'sensor.p1_l3_voltage'
+      device_class: voltage
+      state_class: measurement
+      unit_of_measurement: V
+      state_topic: "sensors/power/p1meter/l3_voltage"
+      value_template: "{{ value|float / 1000 }}"
 
-- platform: mqtt
-  name: P1 L3 Instant Power Current
-  unit_of_measurement: 'A'
-  state_topic: "sensors/power/p1meter/l3_instant_power_current"
-  value_template: "{{ value|float / 1000 }}"
+    - name: P1 L1 Instant Power Current
+      unique_id: 'sensor.p1_l1_instant_power_current'
+      device_class: current
+      state_class: measurement
+      unit_of_measurement: A
+      state_topic: "sensors/power/p1meter/l1_instant_power_current"
+      value_template: "{{ value|float / 1000 }}"
+
+    - name: P1 L2 Instant Power Current
+      unique_id: 'sensor.p1_l2_instant_power_current'
+      device_class: current
+      state_class: measurement
+      unit_of_measurement: A
+      state_topic: "sensors/power/p1meter/l2_instant_power_current"
+      value_template: "{{ value|float / 1000 }}"
+
+    - name: P1 L3 Instant Power Current
+      unique_id: 'sensor.p1_l3_instant_power_current'
+      device_class: current
+      state_class: measurement
+      unit_of_measurement: A
+      state_topic: "sensors/power/p1meter/l3_instant_power_current"
+      value_template: "{{ value|float / 1000 }}"
